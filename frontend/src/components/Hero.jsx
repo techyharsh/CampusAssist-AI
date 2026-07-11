@@ -3,7 +3,8 @@ import { FaRobot, FaGraduationCap } from "react-icons/fa";
 
 function Hero() {
   return (
-    <section className="hero">
+    
+    <section className="hero" id="home">
 
       <div className="hero-content">
 

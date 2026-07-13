@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="logo">🎓 CampusAssist AI</div>
+      <Link to="/" className="logo">
+  🎓 CampusAssist AI
+</Link>
 
       <ul className="nav-links">
         <li><a href="#home">Home</a></li>
@@ -12,9 +15,9 @@ function Navbar() {
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <a href="#home">
+      <Link to="/chat">
   <button className="chat-btn">Start Chat</button>
-</a>
+</Link>
     </nav>
   );
 }

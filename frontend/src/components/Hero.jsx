@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Hero.css";
 import { FaRobot, FaGraduationCap } from "react-icons/fa";
 
@@ -21,14 +22,20 @@ function Hero() {
         </p>
 
         <div className="hero-buttons">
-          <button className="primary-btn">
-            <FaRobot /> Start Chat
-          </button>
 
-          <button className="secondary-btn">
-            Learn More
-          </button>
-        </div>
+  <Link to="/chat">
+    <button className="primary-btn">
+      <FaRobot /> Start Chat
+    </button>
+  </Link>
+
+  <a href="#about">
+    <button className="secondary-btn">
+      Learn More
+    </button>
+  </a>
+
+</div>
 
       </div>
 

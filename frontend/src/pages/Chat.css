@@ -1,0 +1,21 @@
+.chat-page {
+  min-height: 100vh;
+  background: #0f172a;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 20px;
+}
+
+.chat-page button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  background: royalblue;
+  color: white;
+  cursor: pointer;
+}

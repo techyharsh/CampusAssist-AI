@@ -24,7 +24,7 @@ function Chat() {
 }, [messages]);
 
   // Send message
-  const handleSend = () => {
+  const handleSend = async () => {
 
   if (message.trim() === "" || isTyping) return;
 
@@ -42,23 +42,57 @@ function Chat() {
   setMessage("");
 
   setIsTyping(true);
+try {
 
-  setTimeout(() => {
-    setIsTyping(false);
+  const response = await fetch("http://127.0.0.1:8000/chat", {
 
-    const botReply = {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      message: userMessage.text,
+    }),
+  });
+
+  const data = await response.json();
+
+  setIsTyping(false);
+
+  const botReply = {
+
+    sender: "bot",
+
+    text: data.reply,
+
+    time: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+  };
+
+  setMessages((prev) => [...prev, botReply]);
+
+} catch (error) {
+
+  setIsTyping(false);
+
+  setMessages((prev) => [
+
+    ...prev,
+
+    {
       sender: "bot",
-      text: "🤖 Sorry, backend is under development.",
+      text: "❌ Backend connection failed.",
       time: new Date().toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit",
-  }),
-    };
-
-    setMessages((prevMessages) => [...prevMessages,botReply]);
-      // setTyping(false);
-
-  }, 1500);
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    },
+  ]);
+}
 
 };
 
@@ -120,7 +154,7 @@ const handleClearChat = () => {
           ))}
               {isTyping && (
   <div className="bot-message typing">
-    🤖 AI is typing...
+    🤖 AI is typing...<span className="dots">...</span>
   </div>
 )}
             </div>

@@ -9,7 +9,11 @@ function Chat() {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "👋 Hello Harsh! I'm CampusAssist AI. Ask me anything related to placements, coding, college or interviews."
+      text: "👋 Hello Harsh! I'm CampusAssist AI. Ask me anything related to placements, coding, college or interviews.",
+    time: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),   
     }
   ]);
     const [isTyping, setIsTyping] = useState(false);
@@ -22,11 +26,12 @@ function Chat() {
   // Send message
   const handleSend = () => {
 
-  if (message.trim() === "") return;
+  if (message.trim() === "" || isTyping) return;
 
   const userMessage = {
     sender: "user",
-    text: message
+    text: message,
+    time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
   };
 
   setMessages((prevMessages) => [
@@ -43,15 +48,32 @@ function Chat() {
 
     const botReply = {
       sender: "bot",
-      text: "🤖 Sorry, backend is under development."
+      text: "🤖 Sorry, backend is under development.",
+      time: new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  }),
     };
 
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      botReply
-    ]);
+    setMessages((prevMessages) => [...prevMessages,botReply]);
+      // setTyping(false);
 
   }, 1500);
+
+};
+
+const handleClearChat = () => {
+
+  setMessages([
+    {
+      sender: "bot",
+      text: "👋 Hello Harsh! I'm CampusAssist AI. Ask me anything related to placements, coding, college or interviews.",
+     time: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+    },
+  ]);
 
 };
 
@@ -62,8 +84,20 @@ function Chat() {
 
         {/* Header */}
         <div className="chat-header">
+            <div className="header-left">
+
           <h2>🤖 CampusAssist AI</h2>
+            <h3>⚡ Online</h3>
+
         </div>
+        <button
+    className="clear-btn"
+    onClick={handleClearChat}
+  >
+    Clear Chat
+  </button>
+
+</div>
 
         {/* Chat Body */}
         <div className="chat-body" ref={chatBodyRef}>
@@ -78,14 +112,19 @@ function Chat() {
               }
             >
               {msg.text}
+
+              <p className="message-time">
+    {msg.time}
+  </p>
+              </div>
+          ))}
               {isTyping && (
-  <div className="bot-message">
+  <div className="bot-message typing">
     🤖 AI is typing...
   </div>
 )}
             </div>
-          ))}
-        </div>
+          
 
         {/* Input Area */}
         <div className="chat-input">
@@ -103,7 +142,7 @@ function Chat() {
 
           <button
   onClick={handleSend}
-  disabled={message.trim() === ""}
+  disabled={!message.trim()}
 >
   Send
 </button>

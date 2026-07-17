@@ -140,38 +140,29 @@ The chatbot uses:
 
 ---
 
-<!-- ## 📸 Screenshots
-
-- Landing Page
-- Login Page
-- Signup Page
-- Chat Interface
-
-(Add screenshots here) -->
-
 # 📸 Project Screenshots
 
 ## 🏠 Landing Page
 
-![Landing Page](screenshots/Landing Page.png)
+![Landing Page](SnapShots/Landing-Page.png)
 
 ---
 
 ## 🔐 Login Page
 
-![Login Page](screenshots/Login Page.png)
+![Login Page](SnapShots/Login-Page.png)
 
 ---
 
 ## 📝 Signup Page
 
-![Signup Page](screenshots/Signup Page.png)
+![Signup Page](SnapShots/Signup-Page.png)
 
 ---
 
 ## 💬 Chat Interface
 
-![Chat Page](screenshots/Chat Page.png)
+![Chat Page](SnapShots/Chat-Page.png)
 
 ---
 

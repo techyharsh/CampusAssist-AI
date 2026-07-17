@@ -1,6 +1,7 @@
 import "./Footer.css";
 
 function Footer() {
+  <footer id="contact"></footer>
   return (
     <footer className="footer" id="contact">
       <h3>CampusAssist AI</h3>

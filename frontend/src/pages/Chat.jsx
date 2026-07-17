@@ -1,7 +1,9 @@
 import "./Chat.css";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Chat() {
+  const navigate = useNavigate();
   // Input state
   const [message, setMessage] = useState("");
 
@@ -9,7 +11,7 @@ function Chat() {
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "👋 Hello Harsh! I'm CampusAssist AI. Ask me anything related to placements, coding, college or interviews.",
+      text: "👋 Hello! I'm AI Chatbot for Student Support Services.How can I help you today?", 
     time: new Date().toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -101,7 +103,7 @@ const handleClearChat = () => {
   setMessages([
     {
       sender: "bot",
-      text: "👋 Hello Harsh! I'm CampusAssist AI. Ask me anything related to placements, coding, college or interviews.",
+      text: "👋 Hello! I'm AI Chatbot for Student Support Services.How can I help you today?", 
      time: new Date().toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",
@@ -109,6 +111,20 @@ const handleClearChat = () => {
     },
   ]);
 
+};
+
+const handleLogout = () => {
+  setMessages([
+    {
+      sender: "bot",
+      text: "👋 Hello! I'm AI Chatbot for Student Support Services.How can I help you today?", 
+      time: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    },
+  ]);
+  navigate("/login");
 };
 
   return (
@@ -130,6 +146,10 @@ const handleClearChat = () => {
   >
     Clear Chat
   </button>
+
+  <button className="logout-btn" onClick={handleLogout}>
+  Logout
+</button>
 
 </div>
 
@@ -168,7 +188,7 @@ const handleClearChat = () => {
   value={message}
   onChange={(e) => setMessage(e.target.value)}
   onKeyDown={(e) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !isTyping) {
       handleSend();
     }
   }}
@@ -176,7 +196,7 @@ const handleClearChat = () => {
 
           <button
   onClick={handleSend}
-  disabled={!message.trim()}
+  disabled={!message.trim() || isTyping}
 >
   Send
 </button>

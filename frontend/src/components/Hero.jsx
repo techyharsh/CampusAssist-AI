@@ -17,19 +17,19 @@ function Hero() {
         <h2>AI Chatbot for Student Support Services</h2>
 
         <p>
-          Get instant answers to academic, admission, examination,
-          scholarship and campus related queries anytime.
+          Get instant AI-powered assistance for your learning,
+          career and everyday student needs.
         </p>
 
         <div className="hero-buttons">
 
-  <Link to="/chat">
+  <Link to="/login">
     <button className="primary-btn">
       <FaRobot /> Start Chat
     </button>
   </Link>
 
-  <a href="#about">
+  <a href="#features">
     <button className="secondary-btn">
       Learn More
     </button>

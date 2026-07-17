@@ -10,20 +10,20 @@ function Features() {
 
         <div className="feature-card">
             <FaBook />
-          <h3>🎓 Academic Support</h3>
-          <p>Get answers related to subjects, syllabus and study resources.</p>
+          <h3>AI Assistance</h3>
+          <p>Get instant AI-powered responses for your questions.</p>
         </div>
 
         <div className="feature-card">
             <FaCalendarAlt />
-          <h3>📅 Exam Updates</h3>
-          <p>Stay updated with exam dates, notices and important deadlines.</p>
+          <h3>Student Guidance</h3>
+          <p>Receive helpful guidance,learning tips and support.</p>
         </div>
 
         <div className="feature-card">
           <FaRobot />
-          <h3>💬 AI Chatbot</h3>
-          <p>Ask campus-related questions anytime with instant responses.</p>
+          <h3>24/7 Availability</h3>
+          <p>Available anytime to assist students.</p>
         </div>
 
       </div>

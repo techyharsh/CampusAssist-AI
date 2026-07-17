@@ -15,7 +15,7 @@ function Navbar() {
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <Link to="/chat">
+      <Link to="/login">
   <button className="chat-btn">Start Chat</button>
 </Link>
     </nav>
